@@ -19,13 +19,13 @@ export const CreateModal = (props) => {
       title="Create Transaction"
       visible={visible}
       onOk={() => {
-        const incomeCategory = ["Saraly"];
+        const incomeCategory = ["Salary"];
         const type = incomeCategory.includes(category) ? "income" : "expense";
         const newTx = {
           type,
           category,
           date,
-          amount,
+          amount: type === "expense" ? amount * -1 : amount,
         };
         onCreate(newTx);
       }}
